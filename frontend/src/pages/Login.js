@@ -21,8 +21,13 @@ const Login = () => {
       }
 
       // Assuming login is successful based on HTTP status
-      alert('Login successful!');
-      navigate('/home');
+      alert('Login successful! Redirecting to home page...');
+      
+      // Add a 2-second delay before redirecting
+      setTimeout(() => {
+        navigate('/home');
+      }, 2000);
+      
     } catch (error) {
       console.error('Login error:', error);
       alert(`Login failed. Error: ${error.message}`);
