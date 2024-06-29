@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './VideoUpload.css'
+import './VideoUpload.css';
 
 const VideoUpload = () => {
   const [file, setFile] = useState(null);
@@ -33,7 +33,8 @@ const VideoUpload = () => {
           },
         };
 
-        const response = await axios.post('http://localhost:5001/api/videos/upload', formData, config);
+        // Replace 'http://localhost:5001' with your actual backend URL
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/videos/upload`, formData, config);
         console.log('Upload response:', response.data);
         alert('Video uploaded successfully.');
       } else if (videoLink) {

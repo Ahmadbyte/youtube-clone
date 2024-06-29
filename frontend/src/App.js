@@ -11,8 +11,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Register />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/upload" element={<VideoUpload />} /> {/* Route for VideoUpload */}
       </Routes>
     </Router>
