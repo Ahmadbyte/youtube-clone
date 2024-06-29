@@ -24,7 +24,7 @@ const Login = () => {
       alert('Login successful! Redirecting...');
       setTimeout(() => {
         navigate('/home');
-      }, 2000);
+      });
       
     } catch (error) {
       console.error('Login error:', error);
