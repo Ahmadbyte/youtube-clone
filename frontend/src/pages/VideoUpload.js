@@ -34,7 +34,7 @@ const VideoUpload = () => {
         };
 
         // Replace 'http://localhost:5001' with your actual backend URL
-        const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/videos/upload`, formData, config);
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/video/upload`, formData, config);
         console.log('Upload response:', response.data);
         alert('Video uploaded successfully.');
       } else if (videoLink) {

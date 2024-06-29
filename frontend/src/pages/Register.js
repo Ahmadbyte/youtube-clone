@@ -17,7 +17,7 @@ const Register = () => {
     });
     const data = await response.json();
     if (data.message === 'User created') {
-      navigate('/login');
+      navigate('/');
     } else {
       alert(data.error);
     }

@@ -43,7 +43,7 @@ const Home = () => {
 
   return (
     <div className="videos-container">
-      <h1>Videos</h1>
+      <h1>Youtube</h1>
       <ul>
         {videos.map((video) => (
           <li key={video._id} className="video-item">

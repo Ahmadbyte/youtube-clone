@@ -7,8 +7,8 @@ const api = axios.create({
 
 export const register = (data) => api.post('/auth/register', data);
 export const login = (data) => api.post('/auth/login', data);
-export const uploadVideo = (data, config) => api.post('/videos/upload', data, config);
-export const getVideos = () => api.get('/videos');
+export const uploadVideo = (data, config) => api.post('/video/upload', data, config);
+export const getVideos = () => api.get('/video');
 
 export default api;
    
