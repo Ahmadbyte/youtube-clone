@@ -21,9 +21,7 @@ const Login = () => {
       }
 
       // Assuming login is successful based on HTTP status
-      alert('Login successful! Redirecting to home page...');
-      
-      // Add a 2-second delay before redirecting
+      console.log('Login successful! Redirecting...');
       setTimeout(() => {
         navigate('/home');
       }, 2000);
@@ -58,7 +56,7 @@ const Login = () => {
         </div>
         <button type="submit">Login</button>
         <div className="register-link">
-          Don't have an account? <Link to="/register">Register</Link>
+          Don't have an account? <Link to="/">Register</Link>
         </div>
       </form>
     </div>
