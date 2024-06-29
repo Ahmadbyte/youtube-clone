@@ -1,9 +1,12 @@
-// backend/config/db.js
 const mongoose = require('mongoose');
+require('dotenv').config(); // Ensure dotenv is required to load environment variables
 
 const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb+srv://ahmad:SaFb123@cluster0.08sqnhz.mongodb.net/Youtube?retryWrites=true&w=majority');
+    await mongoose.connect(process.env.MONGODB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log('MongoDB connected');
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);

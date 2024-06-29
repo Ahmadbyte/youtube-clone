@@ -10,27 +10,16 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch('http://localhost:5001/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, email, password })
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        if (data.message === 'User created') {
-          navigate('/login');
-        } else {
-          alert('Unexpected response from server');
-        }
-      } else {
-        alert(`Error: ${data.error || 'Server error'}`);
-      }
-    } catch (error) {
-      console.error('Error registering user:', error);
-      alert('Failed to register. Please try again later.');
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, email, password })
+    });
+    const data = await response.json();
+    if (data.message === 'User created') {
+      navigate('/login');
+    } else {
+      alert(data.error);
     }
   };
 
