@@ -21,7 +21,7 @@ const Login = () => {
       }
 
       // Assuming login is successful based on HTTP status
-      console.log('Login successful! Redirecting...');
+      alert('Login successful! Redirecting...');
       setTimeout(() => {
         navigate('/home');
       }, 2000);
