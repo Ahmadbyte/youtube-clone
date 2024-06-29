@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import './Login.css';
+import './login.css'
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -9,17 +9,22 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
-    const data = await response.json();
-    if (data.token) {
-      localStorage.setItem('token', data.token);
-      navigate('/home');
-    } else {
-      alert(data.message);
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await response.json();
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+        navigate('/home');
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error('Error logging in:', error);
+      alert('Error logging in. Please try again.');
     }
   };
 
@@ -47,7 +52,7 @@ const Login = () => {
         </div>
         <button type="submit">Login</button>
         <div className="register-link">
-          Don't have an account? <Link to="/">Register</Link>
+          Don't have an account? <Link to="/register">Register</Link>
         </div>
       </form>
     </div>

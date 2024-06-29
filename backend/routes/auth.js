@@ -37,7 +37,6 @@ router.post('/register', async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
   try {
-    console.log('Login request:', req.body); // Log request body for debugging
     const { email, password } = req.body;
 
     // Validate if email and password are provided
