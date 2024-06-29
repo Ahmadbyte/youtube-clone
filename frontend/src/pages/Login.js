@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import './Login.css'
+import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -15,16 +15,21 @@ const Login = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
       const data = await response.json();
       if (data.token) {
         localStorage.setItem('token', data.token);
         navigate('/home');
       } else {
-        alert(data.message);
+        throw new Error('Token not received');
       }
     } catch (error) {
-      console.error('Error logging in:', error);
-      alert('Error logging in. Please try again.');
+      console.error('Login error:', error);
+      alert('Login failed. Please try again.');
     }
   };
 
