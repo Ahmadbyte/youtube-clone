@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import './Home.css';
+import YouTubeLogo from '../logo.png'; // Add the YouTube logo image in your project
 
 // Mock video data for testing
 const mockVideos = [
@@ -12,21 +13,21 @@ const mockVideos = [
   },
   {
     _id: '2',
-    title: 'Sample Video 1',
+    title: 'Sample Video 2',
     videoUrl: 'https://www.youtube.com/watch?v=_Fwf45pIAtM&list=PL8UhM2ZIAXwt9LTHYZ74L6i3cO2xa_qYz',
-    description: 'This is a sample video 1',
+    description: 'This is a sample video 2',
   },
   {
     _id: '3',
-    title: 'Sample Video 1',
+    title: 'Sample Video 3',
     videoUrl: 'https://www.youtube.com/watch?v=69pPYkGiEAQ',
-    description: 'This is a sample video 1',
+    description: 'This is a sample video 3',
   },
   {
     _id: '4',
-    title: 'Sample Video 1',
+    title: 'Sample Video 4',
     videoUrl: 'https://www.youtube.com/watch?v=R8I3FOX7aZY',
-    description: 'This is a sample video 1',
+    description: 'This is a sample video 4',
   },
   // Add more mock videos as needed
 ];
@@ -43,7 +44,10 @@ const Home = () => {
 
   return (
     <div className="videos-container">
-      <h1>Youtube</h1>
+      <header className="header">
+        <img src={YouTubeLogo} alt="YouTube Logo" className="youtube-logo" />
+        <h1 className="youtube-text">YouTube</h1>
+      </header>
       <ul>
         {videos.map((video) => (
           <li key={video._id} className="video-item">

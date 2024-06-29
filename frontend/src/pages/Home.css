@@ -1,40 +1,53 @@
 /* Home.css */
 
-/* Body styling */
-body {
-  background-color: #202124; /* Dark background similar to YouTube */
-  color: #fff; /* White text */
-  font-family: Arial, sans-serif; /* Default font family */
-}
-
 /* Main container styling */
 .videos-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  background-color: #000; /* Set background color to black */
+  color: #fff; /* Set text color to white for better contrast */
+}
+
+/* Header styling */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* YouTube logo styling */
+.youtube-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+/* YouTube text styling */
+.youtube-text {
+  font-size: 2rem;
+  margin: 0;
 }
 
 /* Video item styling */
 .video-item {
   margin-bottom: 20px;
   padding: 10px;
-  border: 1px solid #333; /* Darker border */
+  border: 1px solid #333;
   border-radius: 5px;
-  background-color: #282828; /* Dark background similar to YouTube video cards */
+  background-color: #1a1a1a;
 }
 
 .video-item h3 {
   margin-top: 0;
   margin-bottom: 10px;
   font-size: 1.5rem;
-  color: #fff; /* White heading */
 }
 
 .video-item .video-player {
   position: relative;
   width: 100%;
   padding-top: 56.25%; /* 16:9 aspect ratio (for responsive iframe) */
-  margin-bottom: 10px;
 }
 
 .video-item .video-player iframe {
@@ -43,10 +56,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  border: none; /* Remove iframe border */
 }
 
 .video-item p {
   margin-top: 10px;
-  color: #ccc; /* Light gray text for description */
+  color: #ccc;
 }
