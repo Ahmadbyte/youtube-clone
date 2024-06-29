@@ -20,16 +20,12 @@ const Login = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const data = await response.json();
-      if (data.token) {
-        localStorage.setItem('token', data.token);
-        navigate('/home');
-      } else {
-        throw new Error('Token not received');
-      }
+      // Assuming login is successful based on HTTP status
+      alert('Login successful!');
+      navigate('/home');
     } catch (error) {
       console.error('Login error:', error);
-      alert('Login failed. Please try again.');
+      alert(`Login failed. Error: ${error.message}`);
     }
   };
 
