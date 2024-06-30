@@ -1,10 +1,9 @@
-// src/components/Home.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import ReactPlayer from 'react-player';
-import { useAuth } from '../AuthContext';
 import './Home.css';
 import YouTubeLogo from '../logo.png'; // Add the YouTube logo image in your project
-import UserIcon from '../user.png'; // Add a user icon image in your project
+import UserLogo from '../user.png'; // Add a user logo image in your project
+import { AuthContext } from '../AuthContext'; // Import AuthContext
 
 // Mock video data for testing
 const mockVideos = [
@@ -36,8 +35,8 @@ const mockVideos = [
 ];
 
 const Home = () => {
+  const { user } = useContext(AuthContext); // Use AuthContext to get the logged-in user
   const [videos, setVideos] = useState([]);
-  const { user } = useAuth();
 
   useEffect(() => {
     // Simulating fetch operation
@@ -49,16 +48,14 @@ const Home = () => {
   return (
     <div className="videos-container">
       <header className="header">
-        <div className="logo-section">
+        <div className="header-left">
           <img src={YouTubeLogo} alt="YouTube Logo" className="youtube-logo" />
           <h1 className="youtube-text">YouTube</h1>
         </div>
-        {user && (
-          <div className="user-section">
-            <span className="username">{user.username}</span>
-            <img src={UserIcon} alt="User Icon" className="user-icon" />
-          </div>
-        )}
+        <div className="user-info">
+          <img src={UserLogo} alt="User Logo" className="user-logo" />
+          <span className="username">{user ? user.name : 'Guest'}</span>
+        </div>
       </header>
       <ul>
         {videos.map((video) => (

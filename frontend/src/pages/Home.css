@@ -19,6 +19,7 @@ body {
 .header {
   display: flex;
   align-items: center;
+  justify-content: space-between; /* Space between logo and user info */
   margin-bottom: 20px;
 }
 
@@ -34,6 +35,26 @@ body {
   color: #cecece;
   font-size: 2rem;
   margin: 0;
+}
+
+/* User info styling */
+.user-info {
+  display: flex;
+  align-items: center;
+  color: #fff; /* Set text color to white */
+}
+
+/* User logo styling */
+.user-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Make it circular */
+  margin-right: 10px;
+}
+
+/* Username styling */
+.username {
+  font-size: 1rem;
 }
 
 /* Video item styling */
