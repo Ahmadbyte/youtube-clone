@@ -1,14 +1,14 @@
-// src/components/Login.js
-import React, { useState } from 'react';
+// src/pages/Login.js
+import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../AuthContext';
 import './Login.css';
+import { AuthContext } from '../AuthContext'; // Import AuthContext
 
 const Login = () => {
+  const { login } = useContext(AuthContext); // Use AuthContext to get the login function
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,13 +23,8 @@ const Login = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      // Assuming the response contains the username
-      const { username } = await response.json();
-
-      // Call login function from AuthContext
-      login(username);
-
-      // Navigate to home page
+      const userData = await response.json();
+      login(userData); // Call the login function with the user data
       alert('Login successful! Redirecting...');
       navigate('/home');
       
