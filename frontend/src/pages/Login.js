@@ -1,11 +1,14 @@
+// src/components/Login.js
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../AuthContext';
 import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,11 +23,15 @@ const Login = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      // Assuming login is successful based on HTTP status
+      // Assuming the response contains the username
+      const { username } = await response.json();
+
+      // Call login function from AuthContext
+      login(username);
+
+      // Navigate to home page
       alert('Login successful! Redirecting...');
-      setTimeout(() => {
-        navigate('/home');
-      });
+      navigate('/home');
       
     } catch (error) {
       console.error('Login error:', error);

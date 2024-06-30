@@ -1,7 +1,10 @@
+// src/components/Home.js
 import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
+import { useAuth } from '../AuthContext';
 import './Home.css';
 import YouTubeLogo from '../logo.png'; // Add the YouTube logo image in your project
+import UserIcon from '../user.png'; // Add a user icon image in your project
 
 // Mock video data for testing
 const mockVideos = [
@@ -34,6 +37,7 @@ const mockVideos = [
 
 const Home = () => {
   const [videos, setVideos] = useState([]);
+  const { user } = useAuth();
 
   useEffect(() => {
     // Simulating fetch operation
@@ -45,8 +49,16 @@ const Home = () => {
   return (
     <div className="videos-container">
       <header className="header">
-        <img src={YouTubeLogo} alt="YouTube Logo" className="youtube-logo" />
-        <h1 className="youtube-text">YouTube</h1>
+        <div className="logo-section">
+          <img src={YouTubeLogo} alt="YouTube Logo" className="youtube-logo" />
+          <h1 className="youtube-text">YouTube</h1>
+        </div>
+        {user && (
+          <div className="user-section">
+            <span className="username">{user.username}</span>
+            <img src={UserIcon} alt="User Icon" className="user-icon" />
+          </div>
+        )}
       </header>
       <ul>
         {videos.map((video) => (
