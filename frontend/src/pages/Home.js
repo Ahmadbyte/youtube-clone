@@ -7,25 +7,25 @@ import YouTubeLogo from '../logo.png'; // Add the YouTube logo image in your pro
 const mockVideos = [
   {
     _id: '1',
-    title: 'Sample Video 1',
-    videoUrl: 'https://www.youtube.com/watch?v=R8I3FOX7aZY',
+    title: 'Video 1',
+    videoUrl: 'https://www.youtube.com/',
     description: 'This is a sample video 1',
   },
   {
     _id: '2',
-    title: 'Sample Video 2',
+    title: 'Video 2',
     videoUrl: 'https://www.youtube.com/watch?v=_Fwf45pIAtM&list=PL8UhM2ZIAXwt9LTHYZ74L6i3cO2xa_qYz',
     description: 'This is a sample video 2',
   },
   {
     _id: '3',
-    title: 'Sample Video 3',
+    title: 'Video 3',
     videoUrl: 'https://www.youtube.com/watch?v=69pPYkGiEAQ',
     description: 'This is a sample video 3',
   },
   {
     _id: '4',
-    title: 'Sample Video 4',
+    title: 'Video 4',
     videoUrl: 'https://www.youtube.com/watch?v=R8I3FOX7aZY',
     description: 'This is a sample video 4',
   },
