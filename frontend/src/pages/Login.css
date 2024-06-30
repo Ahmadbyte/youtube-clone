@@ -1,11 +1,17 @@
 /* Login.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #5454da;
+  margin: 0;
+  padding: 0;
+}
 
 .login {
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;
   border-radius: 8px;
-  background-color: #f0f0f0;
+  background-color: #e3abfa;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -21,21 +27,36 @@
 .login form {
   display: flex;
   flex-direction: column;
+  padding: 10px 10px 10px;
 }
 
 .login form label {
   font-weight: bold;
-  margin-bottom: 8px;
-  color: #333;
+  margin-top: 20px;
+  margin-bottom: -30px;
+  color: #5e5c5c;
 }
 
-.login form input[type="email"],
-.login form input[type="password"] {
+.login form input[type="email"]{
   padding: 10px;
+  margin-left: 90px;
   margin-bottom: 15px;
+  padding-left: 100px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
+  width: 100;
+}
+
+.login form input[type="password"] {
+  padding: 10px;
+  margin-left: 90px;
+  margin-bottom: 15px;
+  padding-left: 100px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100;
 }
 
 .login form button[type="submit"] {

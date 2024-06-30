@@ -7,27 +7,27 @@ import YouTubeLogo from '../logo.png'; // Add the YouTube logo image in your pro
 const mockVideos = [
   {
     _id: '1',
-    title: 'Video 1',
-    videoUrl: 'https://www.youtube.com/',
-    description: 'This is a sample video 1',
+    title: 'Surah Mulk',
+    videoUrl: 'https://www.youtube.com/watch?v=JwXN2fnc8Uk',
+    description: 'This is Surah Mulk',
   },
   {
     _id: '2',
-    title: 'Video 2',
+    title: 'Arabic',
     videoUrl: 'https://www.youtube.com/watch?v=_Fwf45pIAtM&list=PL8UhM2ZIAXwt9LTHYZ74L6i3cO2xa_qYz',
-    description: 'This is a sample video 2',
+    description: 'Arabic',
   },
   {
     _id: '3',
-    title: 'Video 3',
+    title: 'Kissi ki Muskurahato',
     videoUrl: 'https://www.youtube.com/watch?v=69pPYkGiEAQ',
-    description: 'This is a sample video 3',
+    description: 'Vintage song',
   },
   {
     _id: '4',
-    title: 'Video 4',
+    title: 'Kalam eneih',
     videoUrl: 'https://www.youtube.com/watch?v=R8I3FOX7aZY',
-    description: 'This is a sample video 4',
+    description: 'Arabic Song',
   },
   // Add more mock videos as needed
 ];

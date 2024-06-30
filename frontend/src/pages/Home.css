@@ -1,6 +1,12 @@
 /* Home.css */
 
-/* Main container styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #5454da;
+  margin: 0;
+  padding: 0;
+}
+
 .videos-container {
   max-width: 800px;
   margin: 0 auto;
@@ -18,8 +24,8 @@
 
 /* YouTube logo styling */
 .youtube-logo {
-  width: 60px;
-  height: 30px;
+  width: 47px;
+  height: 37px;
   margin-right: 10px;
 }
 
