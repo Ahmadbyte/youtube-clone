@@ -1,23 +1,51 @@
-// backend/routes/video.js
 const express = require('express');
-const { uploadVideo, getVideos } = require('../controllers/video');
-const authMiddleware = require('../middleware/auth');
-const multer = require('multer');
-
 const router = express.Router();
+const Video = require('../models/Video');
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
-  },
+router.post('/link', async (req, res) => {
+  const { videoLink, title, description } = req.body;
+
+  try {
+    const newVideo = new Video({
+      videoUrl: videoLink,
+      title,
+      description,
+      likes: 0,
+      comments: [],
+    });
+
+    await newVideo.save();
+    res.status(201).json(newVideo);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to upload video link', error });
+  }
 });
 
-const upload = multer({ storage });
+router.post('/like/:id', async (req, res) => {
+  const { id } = req.params;
 
-router.post('/upload', authMiddleware, upload.single('video'), uploadVideo);
-router.get('/', getVideos);
+  try {
+    const video = await Video.findById(id);
+    video.likes += 1;
+    await video.save();
+    res.status(200).json(video);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to like video', error });
+  }
+});
+
+router.post('/comment/:id', async (req, res) => {
+  const { id } = req.params;
+  const { comment } = req.body;
+
+  try {
+    const video = await Video.findById(id);
+    video.comments.push(comment);
+    await video.save();
+    res.status(200).json(video);
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to comment on video', error });
+  }
+});
 
 module.exports = router;

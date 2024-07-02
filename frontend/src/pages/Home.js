@@ -1,50 +1,64 @@
-// src/pages/Home.js
 import React, { useEffect, useState, useContext } from 'react';
 import ReactPlayer from 'react-player';
 import './Home.css';
-import YouTubeLogo from '../logo.png'; // Add the YouTube logo image in your project
-import UserLogo from '../user.png'; // Add a user logo image in your project
-import { AuthContext } from '../AuthContext'; // Import AuthContext
+import YouTubeLogo from '../logo.png';
+import UserLogo from '../user.png';
+import LikeLogo from '../like.png'; // Add a like logo image in your project
+import CommentLogo from '../cmt.png'; // Add a comment logo image in your project
+import { AuthContext } from '../AuthContext';
 
-// Mock video data for testing
 const mockVideos = [
   {
     _id: '1',
     title: 'Surah Mulk',
     videoUrl: 'https://www.youtube.com/watch?v=JwXN2fnc8Uk',
     description: 'This is Surah Mulk',
+    likes: 0,
+    comments: [],
   },
   {
     _id: '2',
     title: 'Arabic',
     videoUrl: 'https://www.youtube.com/watch?v=_Fwf45pIAtM&list=PL8UhM2ZIAXwt9LTHYZ74L6i3cO2xa_qYz',
     description: 'Arabic',
+    likes: 0,
+    comments: [],
   },
   {
     _id: '3',
     title: 'Kissi ki Muskurahato',
     videoUrl: 'https://www.youtube.com/watch?v=69pPYkGiEAQ',
     description: 'Vintage song',
+    likes: 0,
+    comments: [],
   },
   {
     _id: '4',
     title: 'Kalam eneih',
     videoUrl: 'https://www.youtube.com/watch?v=R8I3FOX7aZY',
     description: 'Arabic Song',
+    likes: 0,
+    comments: [],
   },
-  // Add more mock videos as needed
 ];
 
 const Home = () => {
-  const { user } = useContext(AuthContext); // Use AuthContext to get the logged-in user
+  const { user } = useContext(AuthContext);
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    // Simulating fetch operation
     setTimeout(() => {
-      setVideos(mockVideos); // Set mock videos after a delay (simulating API fetch)
-    }, 1000); // Delay for 1 second (1000 milliseconds)
+      setVideos(mockVideos);
+    }, 1000);
   }, []);
+
+  const handleLike = (id) => {
+    setVideos(videos.map(video => video._id === id ? { ...video, likes: video.likes + 1 } : video));
+  };
+
+  const handleComment = (id, comment) => {
+    setVideos(videos.map(video => video._id === id ? { ...video, comments: [...video.comments, comment] } : video));
+  };
 
   return (
     <div className="videos-container">
@@ -76,6 +90,19 @@ const Home = () => {
               />
             </div>
             <p>{video.description}</p>
+            <div className="video-actions">
+              <button onClick={() => handleLike(video._id)}>
+                <img src={LikeLogo} alt="Like" className="action-logo" /> {video.likes}
+              </button>
+              <button onClick={() => handleComment(video._id, prompt('Enter your comment:'))}>
+                <img src={CommentLogo} alt="Comment" className="action-logo" /> {video.comments.length}
+              </button>
+            </div>
+            <div className="comments-section">
+              {video.comments.map((comment, index) => (
+                <p key={index} className="comment">{comment}</p>
+              ))}
+            </div>
           </li>
         ))}
       </ul>
