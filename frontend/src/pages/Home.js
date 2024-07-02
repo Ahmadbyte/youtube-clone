@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player';
 import './Home.css';
 import YouTubeLogo from '../logo.png';
 import UserLogo from '../user.png';
-import LikeLogo from '../like.png'; // Add a like logo image in your project
+import LikeLogo from '../likw.png'; // Add a like logo image in your project
 import CommentLogo from '../cmt.png'; // Add a comment logo image in your project
 import { AuthContext } from '../AuthContext';
 
