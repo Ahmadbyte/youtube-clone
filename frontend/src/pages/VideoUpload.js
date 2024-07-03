@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './VideoUpload.css';
 
@@ -76,6 +77,7 @@ const VideoUpload = () => {
           <input type="text" value={videoLink} onChange={(e) => setVideoLink(e.target.value)} />
         </div>
         <button type="submit">Upload</button>
+        <Link to='/'><button>Home</button></Link>
       </form>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import {Link} from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import './Home.css';
 import YouTubeLogo from '../logo.png';
@@ -106,6 +107,7 @@ const Home = () => {
           </li>
         ))}
       </ul>
+      <Link to='/upload'><button>Upload</button></Link>
     </div>
   );
 };
