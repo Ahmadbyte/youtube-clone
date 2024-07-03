@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import './Home.css';
 import YouTubeLogo from '../logo.png';
@@ -64,13 +64,13 @@ const Home = () => {
   return (
     <div className="videos-container">
       <header className="header">
-        <div className="header-left">
+        <div className="header-left" style={{ display: 'flex', alignItems: 'center' }}>
           <img src={YouTubeLogo} alt="YouTube Logo" className="youtube-logo" />
           <h1 className="youtube-text">YouTube</h1>
         </div>
         <div className="user-info">
           <img src={UserLogo} alt="User Logo" className="user-logo" />
-          <span className="username">{user ? user.name : 'Guest'}</span>
+          <span className="username">Self</span>
         </div>
       </header>
       <ul>
