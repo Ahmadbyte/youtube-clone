@@ -26,7 +26,7 @@ const Register = () => {
 
   return (
     <div className="register">
-      <h2>Register</h2>
+      <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username:</label>

@@ -100,11 +100,11 @@ const Home = () => {
             </div>
             <p>{video.description}</p>
             <div className="video-actions">
-              <button onClick={() => handleLike(video._id)}>
-                <img src={LikeLogo} alt="Like" className="action-logo" /> {video.likes}
+              <button className="btnn" onClick={() => handleLike(video._id)}>
+                <img src={LikeLogo} alt="Like" className="btn" /> {video.likes}
               </button>
-              <button onClick={() => handleComment(video._id, prompt('Enter your comment:'))}>
-                <img src={CommentLogo} alt="Comment" className="action-logo" /> {video.comments.length}
+              <button className="btnn" onClick={() => handleComment(video._id, prompt('Enter your comment:'))}>
+                <img src={CommentLogo} alt="Comment" className="btn" /> {video.comments.length}
               </button>
             </div>
             <div className="comments-section">

@@ -60,6 +60,12 @@ body {
 }
 
 /* Video item styling */
+
+ul {
+  list-style-type: none; /* Remove the bullets */
+  padding: 0;
+}
+
 .video-item {
   margin-bottom: 20px;
   padding: 10px;
@@ -118,6 +124,17 @@ body {
   width: 20px;
   height: 20px;
   margin-right: 5px;
+}
+
+.btnn {
+  padding-left: 15px;
+  width: 20px;
+  height: 20px;
+}
+
+.btn {
+  width: 20px;
+  height: 20px;
 }
 
 /* Comments section styling */
