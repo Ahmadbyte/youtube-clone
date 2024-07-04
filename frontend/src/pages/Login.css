@@ -1,7 +1,7 @@
 /* Login.css */
 body {
   font-family: Arial, sans-serif;
-  background-color: #5454da;
+  background-color: #0f1714;
   margin: 0;
   padding: 0;
 }
@@ -11,7 +11,7 @@ body {
   margin: 50px auto;
   padding: 20px;
   border-radius: 8px;
-  background-color: #e3abfa;
+  background-color: #f6eef9;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -33,30 +33,18 @@ body {
 .login form label {
   font-weight: bold;
   margin-top: 20px;
-  margin-bottom: -30px;
   color: #5e5c5c;
 }
 
-.login form input[type="email"]{
-  padding: 10px;
-  margin-left: 90px;
-  margin-bottom: 15px;
-  padding-left: 100px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  width: 100;
-}
-
+.login form input[type="email"],
 .login form input[type="password"] {
   padding: 10px;
-  margin-left: 90px;
   margin-bottom: 15px;
-  padding-left: 100px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
-  width: 100;
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding and borders are included in the element's total width and height */
 }
 
 .login form button[type="submit"] {
@@ -90,4 +78,38 @@ body {
 
 .login .register-link a:hover {
   color: #0056b3;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  .login {
+    width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .login h2 {
+    font-size: 20px;
+  }
+
+  .login form label {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+
+  .login form input[type="email"],
+  .login form input[type="password"] {
+    padding: 8px;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .login form button[type="submit"] {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .login .register-link {
+    font-size: 12px;
+  }
 }

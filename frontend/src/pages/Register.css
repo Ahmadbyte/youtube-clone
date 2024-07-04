@@ -1,6 +1,7 @@
+/* Register.css */
 body {
   font-family: Arial, sans-serif;
-  background-color: #79dbb8;
+  background-color: #0f1714;
   margin: 0;
   padding: 0;
 }
@@ -10,7 +11,7 @@ body {
   margin: 50px auto;
   padding: 20px;
   border-radius: 8px;
-  background-color: #e3abfa;
+  background-color: #fdedfc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -31,25 +32,19 @@ body {
 .register form label {
   font-weight: bold;
   margin-top: 20px;
-  margin-bottom: -30px;
   color: #5e5c5c;
 }
 
-.register form input[type="text"]{
-  padding: 10px;
-  margin-left: 90px;
-  width:69%
-}
-
+.register form input[type="text"],
 .register form input[type="email"],
 .register form input[type="password"] {
   padding: 10px;
-  margin-left: 90px;
   margin-bottom: 15px;
-  padding-left: 90px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding and borders are included in the element's total width and height */
 }
 
 .register form button[type="submit"] {
@@ -83,4 +78,39 @@ body {
 
 .register .login-link a:hover {
   color: #0056b3;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  .register {
+    width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .register h2 {
+    font-size: 20px;
+  }
+
+  .register form label {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+
+  .register form input[type="text"],
+  .register form input[type="email"],
+  .register form input[type="password"] {
+    padding: 8px;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .register form button[type="submit"] {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .register .login-link {
+    font-size: 12px;
+  }
 }
