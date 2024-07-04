@@ -19,6 +19,14 @@ const mockVideos = [
   },
   {
     _id: '2',
+    title: 'List of Surah',
+    videoUrl: 'https://www.youtube.com/watch?v=sjS8vkvycmw&list=PLF-AzhmyjY8xEojcjawrgQ8P21MJRuVfM&index=2',
+    description: 'All Quran Surah Available in this Video',
+    likes: 0,
+    comments: [],
+  },
+  {
+    _id: '3',
     title: 'Arabic',
     videoUrl: 'https://www.youtube.com/watch?v=_Fwf45pIAtM&list=PL8UhM2ZIAXwt9LTHYZ74L6i3cO2xa_qYz',
     description: 'Arabic',
@@ -26,7 +34,7 @@ const mockVideos = [
     comments: [],
   },
   {
-    _id: '3',
+    _id: '4',
     title: 'Kissi ki Muskurahato',
     videoUrl: 'https://www.youtube.com/watch?v=69pPYkGiEAQ',
     description: 'Vintage song',
@@ -34,7 +42,7 @@ const mockVideos = [
     comments: [],
   },
   {
-    _id: '4',
+    _id: '5',
     title: 'Kalam eneih',
     videoUrl: 'https://www.youtube.com/watch?v=R8I3FOX7aZY',
     description: 'Arabic Song',
