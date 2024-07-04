@@ -137,6 +137,10 @@ ul {
   height: 20px;
 }
 
+img.btn{
+  margin-right: 5px;
+}
+
 /* Comments section styling */
 .comments-section {
   margin-top: 10px;
