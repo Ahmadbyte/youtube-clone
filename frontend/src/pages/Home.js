@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import './Home.css';
@@ -6,7 +6,7 @@ import YouTubeLogo from '../logo.png';
 import UserLogo from '../user.png';
 import LikeLogo from '../likw.png'; // Add a like logo image in your project
 import CommentLogo from '../cmt.png'; // Add a comment logo image in your project
-// import { AuthContext } from '../AuthContext';
+import { AuthContext } from '../AuthContext';
 
 const mockVideos = [
   {
@@ -52,7 +52,7 @@ const mockVideos = [
 ];
 
 const Home = () => {
-  // const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
@@ -78,7 +78,7 @@ const Home = () => {
         </div>
         <div className="user-info">
           <img src={UserLogo} alt="User Logo" className="user-logo" />
-          <span className="username">Self</span>
+          <span className="username">{user ? user : 'Self'}</span>
         </div>
       </header>
       <ul>

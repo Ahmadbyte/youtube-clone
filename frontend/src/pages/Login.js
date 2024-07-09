@@ -6,6 +6,7 @@ import { AuthContext } from '../AuthContext'; // Import AuthContext
 
 const Login = () => {
   const { login } = useContext(AuthContext); // Use AuthContext to get the login function
+  const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Login = () => {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ user,email, password })
       });
 
       if (!response.ok) {
@@ -38,6 +39,15 @@ const Login = () => {
     <div className="login">
       <h2>Sign In</h2>
       <form onSubmit={handleSubmit}>
+      <div>
+          <label>Username:</label>
+          <input
+            type="text"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+            required
+          />
+        </div>
         <div>
           <label>Email:</label>
           <input
