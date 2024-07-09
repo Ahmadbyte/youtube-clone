@@ -16,7 +16,7 @@ const Login = () => {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, username })
+        body: JSON.stringify({ username, email, password })
       });
 
       if (!response.ok) {
@@ -24,6 +24,7 @@ const Login = () => {
       }
 
       const userData = await response.json();
+      console.log('User Data:', userData); // Log user data to ensure it's correct
       login(userData);
       alert('Login successful! Redirecting...');
       navigate('/home');

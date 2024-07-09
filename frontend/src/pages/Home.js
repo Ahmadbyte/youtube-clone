@@ -4,8 +4,8 @@ import ReactPlayer from 'react-player';
 import './Home.css';
 import YouTubeLogo from '../logo.png';
 import UserLogo from '../user.png';
-import LikeLogo from '../likw.png'; // Add a like logo image in your project
-import CommentLogo from '../cmt.png'; // Add a comment logo image in your project
+import LikeLogo from '../likw.png';
+import CommentLogo from '../cmt.png';
 import { AuthContext } from '../AuthContext';
 
 const mockVideos = [
@@ -56,10 +56,11 @@ const Home = () => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
+    console.log('User in Home:', user); // Add this line to log the user data in the Home component
     setTimeout(() => {
       setVideos(mockVideos);
     }, 1000);
-  }, []);
+  }, [user]);
 
   const handleLike = (id) => {
     setVideos(videos.map(video => video._id === id ? { ...video, likes: video.likes + 1 } : video));
