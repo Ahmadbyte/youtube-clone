@@ -1,61 +1,33 @@
+// backend/routes/auth.js
 const express = require('express');
-const User = require('../models/User');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
 
-// Register
-router.post('/register', async (req, res) => {
-  try {
-    const { username, email, password } = req.body;
-
-    // Validate if username, email, and password are provided
-    if (!username || !email || !password) {
-      return res.status(400).json({ error: 'Please provide username, email, and password' });
-    }
-
-    // Check if user already exists
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ error: 'User already exists with this email' });
-    }
-
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Create a new user
-    const newUser = new User({ username, email, password: hashedPassword });
-    await newUser.save();
-
-    res.status(201).json({ message: 'User created' });
-  } catch (err) {
-    console.error('Error registering user:', err);
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// Login
+// Login route
 router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+  const { username, email, password } = req.body;
 
   try {
-    // Find user by email
-    const user = await User.findOne({ email });
+    // Find the user by email or username
+    const user = await User.findOne({ $or: [{ email }, { username }] });
     if (!user) {
-      return res.status(400).json({ message: 'Invalid email or password' });
+      return res.status(404).json({ message: 'User not found' });
     }
 
-    // Compare provided password with hashed password in database
+    // Check if password is correct
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid email or password' });
+      return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    // If login is successful, you can send a success message or simply a status
-    res.status(200).json({ message: 'Login successful' });
+    // Create a token and send it to the client
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.json({ token, user: user.username });
   } catch (error) {
-    console.error('Error logging in user:', error);
-    res.status(500).json({ error: error.message });
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
