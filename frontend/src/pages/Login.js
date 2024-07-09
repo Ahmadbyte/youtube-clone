@@ -1,14 +1,13 @@
-// src/pages/Login.js
 import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
-import { AuthContext } from '../AuthContext'; // Import AuthContext
+import { AuthContext } from '../AuthContext';
 
 const Login = () => {
-  const { login } = useContext(AuthContext); // Use AuthContext to get the login function
-  const [user, setUser] = useState('');
+  const { login } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -17,7 +16,7 @@ const Login = () => {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user,email, password })
+        body: JSON.stringify({ email, password, username })
       });
 
       if (!response.ok) {
@@ -25,7 +24,7 @@ const Login = () => {
       }
 
       const userData = await response.json();
-      login(userData); // Call the login function with the user data
+      login(userData);
       alert('Login successful! Redirecting...');
       navigate('/home');
       
@@ -39,12 +38,12 @@ const Login = () => {
     <div className="login">
       <h2>Sign In</h2>
       <form onSubmit={handleSubmit}>
-      <div>
+        <div>
           <label>Username:</label>
           <input
             type="text"
-            value={user}
-            onChange={(e) => setUser(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>

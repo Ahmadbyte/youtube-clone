@@ -4,10 +4,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import VideoUpload from './pages/VideoUpload'; // Import VideoUpload component
-import AuthProvider from './AuthContext'; // Import AuthProvider
+import { AuthProvider } from './AuthContext'; // Correct named import
 
-function App() {
+const App = () => {
   return (
     <AuthProvider>
       <Router>
@@ -15,11 +14,10 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/upload" element={<VideoUpload />} /> {/* Route for VideoUpload */}
         </Routes>
       </Router>
     </AuthProvider>
   );
-}
+};
 
 export default App;
